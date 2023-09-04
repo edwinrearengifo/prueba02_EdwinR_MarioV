@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Página de inicio";
+}
+
+
+
+<style>
+    body {
+        background-color: #000; /* Fondo negro */
+        color: #fff; /* Texto blanco */
+    }
+
+
+
+    .container {
+        margin-top: 20px;
+    }
+
+
+
+    h1 {
+        color: #007BFF; /* Color azul para el encabezado */
+    }
+
+
+
+    p {
+        font-size: 18px;
+    }
+
+
+
+    .btn-custom {
+        background-color: #007BFF; /* Fondo azul para los botones */
+        color: #fff; /* Texto blanco */
+        width: 100%; /* Botones del mismo tamaño */
+        margin-bottom: 10px; /* Espacio entre los botones */
+    }
+
+
+
+        .btn-custom:hover {
+            background-color: #0056b3; /* Cambia el color de fondo del botón en el hover a tu preferencia */
+        }
+</style>
+
+
+
+<div class="container">
+    <h1>Bienvenido a la página de inicio</h1>
+    <p>Selecciona una opción:</p>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="@Url.Action("Paises", "Countries")" class="btn btn-custom">Paises</a>
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("Informacion", "Team")" class="btn btn-custom">Información Club</a>
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("Estadisticas", "Team")" class="btn btn-custom">Rendimiento Club</a>
+        </div>
+        <div class="col-md-3">
+            <a href="@Url.Action("InformacionJugador", "Player")" class="btn btn-custom">Información Jugador</a>
+        </div>
+    </div>
+</div>

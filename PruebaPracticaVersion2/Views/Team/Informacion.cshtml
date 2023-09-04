@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Información del Equipo";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #000; color: #fff;">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h2 class="text-center mb-4">Buscar y Mostrar Equipo de Fútbol</h2>
+                <form method="post" action="@Url.Action("GetTeam", "Team")" class="mb-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="teamId" name="id" placeholder="Ingrese el ID del equipo" required>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr />
+        @if (!string.IsNullOrEmpty(ViewBag.TeamName))
+        {
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Detalles del Equipo:</h3>
+                    <table class="table table-striped table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Nombre:</td>
+                                <td>@ViewBag.TeamName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Código:</td>
+                                <td>@ViewBag.TeamCode</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">País:</td>
+                                <td>@ViewBag.TeamCountry</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Año de Fundación:</td>
+                                <td>@ViewBag.TeamFounded</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Estadio:</h3>
+                    <table class="table table-striped table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Nombre del Estadio:</td>
+                                <td>@ViewBag.VenueName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Dirección:</td>
+                                <td>@ViewBag.VenueAddress</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Ciudad:</td>
+                                <td>@ViewBag.VenueCity</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Capacidad:</td>
+                                <td>@ViewBag.VenueCapacity</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-3">Logo del Equipo:</h3>
+                    <img src="@ViewBag.LogoUrl" alt="Logo del equipo" class="img-fluid rounded-circle d-block mx-auto" style="max-width: 200px;" />
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

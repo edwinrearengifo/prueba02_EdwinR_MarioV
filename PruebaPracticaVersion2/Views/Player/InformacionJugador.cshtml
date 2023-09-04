@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Información del Jugador";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #000; color: #fff;">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h2 class="text-center mb-4">Buscar y Mostrar Equipo de Fútbol</h2>
+                <form method="post" action="@Url.Action("GetPlayer", "Player")" class="mb-4">
+                    <div class="form-group">
+                        <label for="liga">ID de la Liga:</label>
+                        <input type="text" class="form-control" id="teamId" name="id" placeholder="Ingrese el ID del equipo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estacion">Temporada:</label>
+                        <input type="text" class="form-control" id="estacion" name="estacion" placeholder="Temporada" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+        <hr />
+        @if (!string.IsNullOrEmpty(ViewBag.PlayerName))
+        {
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Detalles del Jugador:</h3>
+                    <table class="table table-striped table-bordered" style="background-color: #333;">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Nombre:</td>
+                                <td>@ViewBag.PlayerName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Apellido:</td>
+                                <td>@ViewBag.PlayerLastName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Edad:</td>
+                                <td>@ViewBag.PlayerAge</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Nacionalidad:</td>
+                                <td>@ViewBag.PlayerNationality</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Altura:</td>
+                                <td>@ViewBag.PlayerHeight</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Liga Y Equipo:</h3>
+                    <table class="table table-striped table-bordered" style="background-color: #333;">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Pais:</td>
+                                <td>@ViewBag.LeagueCountry</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Liga:</td>
+                                <td>@ViewBag.LeagueName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Equipo:</td>
+                                <td>@ViewBag.teamName</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Informacion de la Temporada:</h3>
+                    <table class="table table-striped table-bordered" style="background-color: #333;">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Apariciones:</td>
+                                <td>@ViewBag.GamesAppearences</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Posicion:</td>
+                                <td>@ViewBag.GamesPosition</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Goles Totales:</td>
+                                <td>@ViewBag.GoalsTotal</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Asitencias Totales:</td>
+                                <td>@ViewBag.GoalsAssists</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-3">Foto del Jugador:</h3>
+                    <img src="@ViewBag.LogoUrl" alt="Logo del equipo" class="img-fluid rounded-circle d-block mx-auto" style="max-width: 200px;" />
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

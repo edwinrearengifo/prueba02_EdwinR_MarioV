@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Estadísticas del Equipo";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #000; color: #fff;">
+    <div class="container">
+        <h2 class="text-primary">Estadísticas del Equipo</h2>
+        <form method="post" action="@Url.Action("GetTeamInfo", "Team")">
+            <div class="form-group">
+                <label for="liga">ID de la Liga:</label>
+                <input type="number" class="form-control" id="liga" name="liga" placeholder="ID de la Liga" required>
+            </div>
+            <div class="form-group">
+                <label for="estacion">Temporada:</label>
+                <input type="text" class="form-control" id="estacion" name="estacion" placeholder="Temporada" required>
+            </div>
+            <div class="form-group">
+                <label for="equipo">ID del Equipo:</label>
+                <input type="number" class="form-control" id="equipo" name="equipo" placeholder="ID del Equipo" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha Límite:</label>
+                <input type="text" class="form-control" id="fecha" name="fecha" placeholder="AAAA-MM-DD">
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+
+
+
+        <hr />
+
+
+
+        @if (!string.IsNullOrEmpty(ViewBag.LeagueName))
+        {
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Detalles del Equipo:</h3>
+                    <table class="table table-striped table-bordered" style="background-color: #333;">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Nombre de Liga:</td>
+                                <td>@ViewBag.LeagueName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Pais:</td>
+                                <td>@ViewBag.LeagueCountry</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Temporada:</td>
+                                <td>@ViewBag.LeagueSeason</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-4">Equipo:</h3>
+                    <table class="table table-striped table-bordered" style="background-color: #333;">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Nombre del Equipo:</td>
+                                <td>@ViewBag.TeamName</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Partidos Jugados:</td>
+                                <td>@ViewBag.PlayedTotal</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Partidos Ganados:</td>
+                                <td>@ViewBag.WinsTotal</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Partidos Empatados:</td>
+                                <td>@ViewBag.DrawTotal</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Partidos Perdidos:</td>
+                                <td>@ViewBag.LosesTotal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <h3 class="text-center mb-3">Logo Liga:</h3>
+                    <div style="background-color: #fff; text-align: center; padding: 10px;">
+                        <img src="@ViewBag.LogoUrl" alt="Logo de la Liga" class="img-fluid rounded-circle d-block mx-auto" style="max-width: 200px;" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
